@@ -40,13 +40,13 @@ public class WUClientPlayerModifiers implements WurmClientMod, PreInitable, Conf
             CtClass[] parameters = new CtClass[]{CtPrimitiveType.floatType};
             //CtMethod method = ex.getMethod("hasSleepBonus", Descriptor.ofMethod(CtPrimitiveType.booleanType, parameters));
             CtMethod method = ex.getMethod("setSpeedModifier", Descriptor.ofMethod(CtPrimitiveType.voidType, parameters));
-            method.insertBefore("if ($1 < "+speedModifier+") $1 = "+speedModifier+";");
+            method.insertBefore("if ($1 < "+speedModifier+") $1 = "+speedModifier+"f;");
             //methodInfo.rebuildStackMapIf6(classPool, cf);
             //methodInfo.rebuildStackMap(classPool);
             parameters = new CtClass[]{};
             //CtMethod method = ex.getMethod("hasSleepBonus", Descriptor.ofMethod(CtPrimitiveType.booleanType, parameters));
             method = ex.getMethod("getSpeedMod", Descriptor.ofMethod(CtPrimitiveType.floatType, parameters));
-            method.insertBefore("if (this.speedMod < "+speedModifier+") return "+speedModifier+";");
+            method.insertBefore("if (this.speedMod < "+speedModifier+") return "+speedModifier+"f;");
             //methodInfo.rebuildStackMapIf6(classPool, cf);
             //methodInfo.rebuildStackMap(classPool);
             
